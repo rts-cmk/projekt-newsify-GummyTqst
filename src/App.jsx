@@ -5,6 +5,8 @@ import Archive from "./pages/Archive"
 import Popular from "./pages/Popular"
 import Settings from "./pages/Settings"
 
+import "./styles/main.sass"
+
 const router = createBrowserRouter([
   {
     path: "/",
