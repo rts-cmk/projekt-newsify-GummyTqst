@@ -4,15 +4,17 @@ import Layout from "./components/Layout/Layout"
 import Archive from "./pages/Archive"
 import Popular from "./pages/Popular"
 import Settings from "./pages/Settings"
+import SplashScreen from "./pages/SplashScreen"
 
 import "./styles/main.sass"
 
 const router = createBrowserRouter([
+  { path: "/", element: <SplashScreen /> },
   {
-    path: "/",
+    path: "/home",
     element: <Layout />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/home", element: <Home /> },
       { path: "/archive", element: <Archive /> },
       { path: "/popular", element: <Popular /> },
       { path: "/settings", element: <Settings />},
