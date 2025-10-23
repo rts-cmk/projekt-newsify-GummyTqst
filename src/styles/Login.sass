@@ -1,0 +1,78 @@
+@use 'variables'
+    
+.loginContainer
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    &__logo
+        width: 120px
+        height: 150px
+        margin-top: 3rem
+        margin-bottom: 2rem
+
+    &__title
+        font-family: variables.$font-primary
+        font-size: variables.$font-size-xl
+        color: variables.$color-setting-text
+        text-align: center
+        margin-bottom: 2rem
+    
+    &__subtitle
+        font-family: variables.$font-secondary
+        font-size: variables.$font-size-base
+        color: variables.$color-setting-text
+        margin-bottom: 3rem
+        text-align: center
+        width: 80%
+
+    &__btns
+        display: flex
+        flex-direction: column
+        gap: 1rem
+        width: 70%
+
+    &__btn
+        padding: 0.635rem 2rem
+        border: 1px solid variables.$color-secondary
+        color: variables.$color-setting-text
+        background-color: variables.$color-white
+        border-radius: 18px
+
+        &--password
+            background: variables.$color-primary
+            color: variables.$color-white
+
+
+    &__seperator
+        display: flex
+        align-items: center
+        text-align: center
+        color: variables.$color-setting-text
+        margin: 20px 0
+        text-transform: uppercase
+
+        &::before, &::after
+            content: ''
+            flex-grow: 1
+            height: 1px
+            background-color: variables.$color-border-gray
+        &::before
+            margin-right: 10px
+        &::after
+            margin-left: 10px
+
+    &__signupText
+        font-family: variables.$font-secondary
+        font-size: variables.$font-size-sm
+        color: variables.$color-setting-text
+        margin-top: 2rem
+
+    &__signupLink
+        color: variables.$color-primary
+        text-decoration: none
+        font-weight: variables.$font-weight-bold
+        cursor: pointer
+
+    

@@ -1,0 +1,38 @@
+@use '../../styles/variables'
+
+.footer-nav
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    background: variables.$color-white
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5)
+
+.bottom-nav
+    display: flex
+    justify-content: space-around
+    align-items: center
+    height: 60px
+
+    &__nav-content
+        display: flex
+        justify-content: space-around
+        align-items: center
+        width: 100%
+
+    &__a
+        display: flex
+        flex-direction: column
+
+        svg
+            width: 24px
+            height: 24px
+        
+        &--active
+            color: variables.$color-primary
+
+            svg
+                transform: scale(1.2)
+
+                path
+                    stroke: variables.$color-primary

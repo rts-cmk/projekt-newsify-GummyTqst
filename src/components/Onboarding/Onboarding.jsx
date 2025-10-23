@@ -33,7 +33,7 @@ function Onboarding({ onComplete }) {
 
   function completeOnboarding() {
     localStorage.setItem("firstVisitOnboarding", "true");
-    onComplete(); // navigate to login page or next step
+    onComplete();
   }
 
   return (
@@ -71,11 +71,11 @@ function Onboarding({ onComplete }) {
       </div>
 
       <div className="onboarding__actions">
-        <button className="onboarding__btn skip" onClick={completeOnboarding}>
+        <button className="onboarding__btn onboarding__btn--skip" onClick={completeOnboarding }>
           Skip
         </button>
 
-        <button onClick={handleNext} className="onboarding__btn next">
+        <button onClick={handleNext} className="onboarding__btn onboarding__btn--next">
           {index === slides.length - 1 ? "Continue" : "Next"}
         </button>
       </div>
