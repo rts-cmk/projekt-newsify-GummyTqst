@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Darkmode.sass";
+import "../DarkMode/Darkmode.sass";
 
 export default function ThemeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
