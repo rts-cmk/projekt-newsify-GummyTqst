@@ -1,10 +1,13 @@
-@use 'variables'
+@use 'variables' as vars
     
 .loginContainer
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
+
+    @include vars.themify(vars.$themes) 
+        background: vars.themed("bg");
 
     &__logo
         width: 120px
@@ -13,16 +16,16 @@
         margin-bottom: 2rem
 
     &__title
-        font-family: variables.$font-primary
-        font-size: variables.$font-size-xl
-        color: variables.$color-setting-text
+        font-family: vars.$font_family-heading
+        font-size: vars.$font-size-xl
+        color: vars.$color-text
         text-align: center
         margin-bottom: 2rem
     
     &__subtitle
-        font-family: variables.$font-secondary
-        font-size: variables.$font-size-base
-        color: variables.$color-setting-text
+        font-family: vars.$font_family-body
+        font-size: vars.$font-size-base
+        color: vars.$color-text
         margin-bottom: 3rem
         text-align: center
         width: 80%
@@ -35,21 +38,21 @@
 
     &__btn
         padding: 0.635rem 2rem
-        border: 1px solid variables.$color-secondary
-        color: variables.$color-setting-text
-        background-color: variables.$color-white
+        border: 1px solid vars.$color-accent
+        color: vars.$color-text
+        background-color: vars.$color-bg
         border-radius: 18px
 
         &--password
-            background: variables.$color-primary
-            color: variables.$color-white
+            background: vars.$color-brand
+            color: vars.$color-bg
 
 
     &__seperator
         display: flex
         align-items: center
         text-align: center
-        color: variables.$color-setting-text
+        color: vars.$color-text
         margin: 20px 0
         text-transform: uppercase
 
@@ -57,22 +60,22 @@
             content: ''
             flex-grow: 1
             height: 1px
-            background-color: variables.$color-border-gray
+            background-color: vars.$color-accent
         &::before
             margin-right: 10px
         &::after
             margin-left: 10px
 
     &__signupText
-        font-family: variables.$font-secondary
-        font-size: variables.$font-size-sm
-        color: variables.$color-setting-text
+        font-family: vars.$font_family-body
+        font-size: vars.$font-size-sm
+        color: vars.$color-text
         margin-top: 2rem
 
     &__signupLink
-        color: variables.$color-primary
+        color: vars.$color-brand
         text-decoration: none
-        font-weight: variables.$font-weight-bold
+        font-weight: bold
         cursor: pointer
 
     

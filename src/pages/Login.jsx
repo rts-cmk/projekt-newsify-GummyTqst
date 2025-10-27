@@ -1,7 +1,15 @@
+import { useNavigate } from "react-router"
 import logo from "../assets/img/logo.png"
 import "../styles/Login.sass"
 
 export default function Login() {
+    const navigate = useNavigate()
+
+    function handleNavigate() {
+        navigate("/home")
+    }
+
+
     return (
         <div className="loginContainer">
             <header className="loginContainer__header">
@@ -10,10 +18,10 @@ export default function Login() {
             </header>
             <p className="loginContainer__subtitle">Welcome! Let's dive into your account</p>
             <div className="loginContainer__btns">
-                <button className="loginContainer__btn loginContainer__btn--facebook">
+                <button onClick={handleNavigate} className="loginContainer__btn loginContainer__btn--facebook">
                     Continue with Facebook
                 </button>
-                <button className="loginContainer__btn loginContainer__btn--google">
+                <button onClick={handleNavigate} className="loginContainer__btn loginContainer__btn--google">
                     Continue with Google
                 </button>
             </div>
@@ -23,7 +31,7 @@ export default function Login() {
             </div>
 
             <footer className="loginContainer__footer">
-                <button className="loginContainer__btn loginContainer__btn--password">
+                <button onClick={handleNavigate} className="loginContainer__btn loginContainer__btn--password">
                     Sign in with password
                 </button>
                 <p className="loginContainer__signupText">

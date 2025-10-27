@@ -1,12 +1,19 @@
-@use '../../styles/variables'
+@use '../../styles/variables' as vars
+
+
+.app-container
+    @include vars.themify(vars.$themes) 
+        background: vars.themed("bg");
 
 .footer-nav
     position: fixed
     bottom: 0
     left: 0
     right: 0
-    background: variables.$color-white
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5)
+    
+    @include vars.themify(vars.$themes) 
+        background: vars.themed("bg");
 
 .bottom-nav
     display: flex
@@ -29,10 +36,10 @@
             height: 24px
         
         &--active
-            color: variables.$color-primary
+            color: vars.$color-brand
 
             svg
                 transform: scale(1.2)
 
                 path
-                    stroke: variables.$color-primary
+                    stroke: vars.$color-brand
