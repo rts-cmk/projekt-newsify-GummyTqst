@@ -1,7 +1,18 @@
+@use '../../styles/variables' as vars
+    
 .articles-list
     padding-block: 1rem
     border: 1px solid #c5c5c5
     border-width: 1px 0
+    height: 1.5rem
+    transition: height 0.5s ease
+    overflow: hidden
+
+    @include vars.themify(vars.$themes)
+        color: vars.themed("text");
+
+    @include vars.themify(vars.$themes)
+        background: vars.themed("bg");
 
     &:last-of-type
         border-bottom-width: 1px

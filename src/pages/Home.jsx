@@ -3,7 +3,7 @@ import useNewsCache from "../Hooks/useNewsCatch";
 import ArticlesList from "../components/ArticleList/ArticleList";
 
 export default function Home() {
-  const { news, loading, error, saveArticle, SECTIONS } = useNewsCache();
+  const { news, loading, error, saveArticle, unsaveArticle, saved, SECTIONS } = useNewsCache();
 
   return (
     <div className="home-news">
@@ -18,6 +18,8 @@ export default function Home() {
           section={section}
           articles={news[section] || []}
           onSave={saveArticle}
+          onUnsave={unsaveArticle}
+          saved={saved}
           defaultOpen={i === 0}
         />
       ))}
