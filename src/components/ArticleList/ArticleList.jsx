@@ -1,6 +1,7 @@
 import React from "react";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import ArticleCard from "../ArticleCard/ArticleCard";
+import logo from "../../assets/img/logo.png"
 import "../ArticleList/ArticleList.sass"
 
 export default function ArticlesList({ section, articles, onSave, onUnsave, saved, defaultOpen=false }) {
@@ -21,7 +22,11 @@ export default function ArticlesList({ section, articles, onSave, onUnsave, save
         {...(defaultOpen ? { open: true } : {})}
     >
         <summary className="articles-list__summary">
-            {section} <IoChevronForwardOutline className="articles-list__icon" />
+            <div className="articles-list__section-header">
+                <img src={logo} alt="Logo" className="articles-list__logo" />
+                {section}
+            </div>
+             <IoChevronForwardOutline className="articles-list__icon" />
         </summary>
 
         <div className="articles-list__section-content">

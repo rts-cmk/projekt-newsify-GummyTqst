@@ -1,8 +1,23 @@
 import { NavLink, Outlet } from "react-router";
 import "../Layout/Layout.sass" 
 import logo from "../../assets/img/logo.png"
+import { useEffect } from "react";
+
+const themeColor = () => {
+    const savedTheme = localStorage.getItem("theme");
+    const themeToApply = savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ? "dark-theme"
+        : "light-theme";
+    document.body.className = themeToApply;
+}
 
 export default function Layout() {
+
+    useEffect(() => {
+        themeColor();
+    }, [])
+
+
     return (
         <div className="app-container">
             <header>

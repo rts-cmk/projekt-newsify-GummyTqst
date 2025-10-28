@@ -1,4 +1,4 @@
-@use 'variables'
+@use 'variables' as vars
     
 .splash
     display: flex
@@ -8,12 +8,16 @@
     height: 100vh
     overflow: hidden
 
+    @include vars.themify(vars.$themes) 
+        background-color: vars.themed("bg");
+        color: vars.themed("text");
+
     &__logo
         width: 150px
         height: 150px
         margin-bottom: 20px
     
     &__title 
-        font-family: variables.$font_family-heading
+        font-family: vars.$font_family-heading
         opacity: 0.9
         letter-spacing: 1px

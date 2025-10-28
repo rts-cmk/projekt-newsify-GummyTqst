@@ -2,14 +2,26 @@
 
 
 .app-container
+    min-height: 100vh
     @include vars.themify(vars.$themes) 
         background: vars.themed("bg");
+
+header
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 8px
+    paddding-top: 20px
+    height: 60px
+    @include vars.themify(vars.$themes) 
+        color: vars.themed("text");
 
 .footer-nav
     position: fixed
     bottom: 0
     left: 0
     right: 0
+    z-index: 100
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5)
     
     @include vars.themify(vars.$themes) 

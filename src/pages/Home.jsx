@@ -1,13 +1,14 @@
 import React from "react";
 import useNewsCache from "../Hooks/useNewsCatch";
 import ArticlesList from "../components/ArticleList/ArticleList";
+import Search from "../components/Search/Search"
 
 export default function Home() {
   const { news, loading, error, saveArticle, unsaveArticle, saved, SECTIONS } = useNewsCache();
 
   return (
     <div className="home-news">
-      <input type="text" placeholder="Search news..." className="search-box" />
+      <Search />
 
       {loading && <p className="status">Loading latest news...</p>}
       {error && <p className="status error">{error.message}</p>}

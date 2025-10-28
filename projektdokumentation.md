@@ -1,8 +1,8 @@
 # Projektdokumentation
 
-**Navn:** 
+**Navn:** Tobias Neumann
 
-**Hold:** WUxx
+**Hold:** WU14
 
 **Uddannelse:** Webudvikler
 
@@ -14,11 +14,12 @@
 ## Teknologier
 
 -   HTML
--   CSS
+-   SASS
 -   JavaScript
--   Webpack
--	Jest
--   ...
+-   React
+-	React-Swipe
+-   Framer-motion
+-	React-Router
 
 ---
 

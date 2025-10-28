@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import content from "../Onboarding/content.json"
 import "./Onboarding.sass"
 
+const themeColor = () => {
+  const savedTheme = localStorage.getItem("theme");
+  const themeToApply = savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ? "dark-theme"
+      : "light-theme";
+  document.body.className = themeToApply;
+}
+
+
 function Onboarding({ onComplete }) {
   const [index, setIndex] = useState(0);
   const slides = content.slides;
+
+  useEffect(() => {
+    themeColor();
+  }, [])
 
   function handleNext() {
     if (index < slides.length - 1) {

@@ -1,4 +1,4 @@
-@use '../../styles/variables'
+@use '../../styles/variables' as vars
     
 .onboarding
     display: flex
@@ -9,6 +9,10 @@
     padding: 2rem
     text-align: center
     overflow: hidden
+
+    @include vars.themify(vars.$themes) 
+        background-color: vars.themed("bg");
+        color: vars.themed("text");
 
     &__dots 
         display: flex
@@ -30,28 +34,28 @@
         text-align: center
 
         &--next
-            background-color: variables.$color-brand
-            color: variables.$color-bg
-            font-family: variables.$font_family-body
-            font-size: variables.$font-size-lg
+            background-color: vars.$color-brand
+            color: vars.$color-bg
+            font-family: vars.$font_family-body
+            font-size: vars.$font-size-lg
         &--skip
-            background-color: variables.$color-bg
-            border: 1px solid variables.$color-border-green
-            color: variables.$color-brand
-            font-family: variables.$font_family-body
-            font-size: variables.$font-size-lg
+            background-color: vars.$color-bg
+            border: 1px solid vars.$color-border-green
+            color: vars.$color-brand
+            font-family: vars.$font_family-body
+            font-size: vars.$font-size-lg
 
 .dot
     width: 10px
     height: 10px
     border-radius: 50%
-    background: variables.$color-accent
+    background: vars.$color-accent
     cursor: pointer
 
     transition: width 0.3s ease, background-color 0.3s ease, transform 0.3s ease
 
     &--active
-        background: variables.$color-brand
+        background: vars.$color-brand
         width: 25px
         border-radius: 5px
         
@@ -66,15 +70,13 @@
         margin-bottom: 1.5rem
     
     &__header
-        font-family: variables.$font_family-heading
-        font-size: variables.$font-size-3xl
-        color: variables.$color-text
+        font-family: vars.$font_family-heading
+        font-size: vars.$font-size-3xl
         margin-bottom: 1rem
 
     &__desc
-        font-family: variables.$font_family-body
-        font-size: variables.$font-size-base
-        color: variables.$color-text
+        font-family: vars.$font_family-body
+        font-size: vars.$font-size-base
         letter-height: 1.5rem
         max-width: 300px
         margin: 0 auto

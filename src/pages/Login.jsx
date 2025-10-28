@@ -1,9 +1,22 @@
 import { useNavigate } from "react-router"
 import logo from "../assets/img/logo.png"
 import "../styles/Login.sass"
+import { useEffect } from "react";
+
+const themeColor = () => {
+    const savedTheme = localStorage.getItem("theme");
+    const themeToApply = savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ? "dark-theme"
+        : "light-theme";
+    document.body.className = themeToApply;
+}
 
 export default function Login() {
     const navigate = useNavigate()
+
+    useEffect(() => {
+        themeColor();
+    }, [])
 
     function handleNavigate() {
         navigate("/home")

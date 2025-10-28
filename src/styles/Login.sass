@@ -5,9 +5,17 @@
     flex-direction: column
     justify-content: center
     align-items: center
+    min-height: 100vh
 
     @include vars.themify(vars.$themes) 
         background-color: vars.themed("bg");
+        color: vars.themed("text");
+
+    &__header
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
 
     &__logo
         width: 120px
@@ -18,14 +26,12 @@
     &__title
         font-family: vars.$font_family-heading
         font-size: vars.$font-size-xl
-        color: vars.$color-text
         text-align: center
         margin-bottom: 2rem
     
     &__subtitle
         font-family: vars.$font_family-body
         font-size: vars.$font-size-base
-        color: vars.$color-text
         margin-bottom: 3rem
         text-align: center
         width: 80%
@@ -52,15 +58,16 @@
         display: flex
         align-items: center
         text-align: center
-        color: vars.$color-text
         margin: 20px 0
         text-transform: uppercase
+        width: 80%
 
         &::before, &::after
             content: ''
             flex-grow: 1
             height: 1px
-            background-color: vars.$color-accent
+            @include vars.themify(vars.$themes) 
+                background-color: vars.themed("accent");
         &::before
             margin-right: 10px
         &::after
@@ -69,7 +76,6 @@
     &__signupText
         font-family: vars.$font_family-body
         font-size: vars.$font-size-sm
-        color: vars.$color-text
         margin-top: 2rem
 
     &__signupLink
