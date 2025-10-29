@@ -1,0 +1,53 @@
+@use '../../styles/variables' as vars
+    
+.category-settings
+    padding: 1.5rem
+
+    &__options
+        display: flex
+        flex-direction: column
+        gap: 1rem
+
+    &__item
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 1rem
+        border-radius: 8px
+
+    &__toggle
+        position: relative
+        width: 50px
+        height: 24px
+
+        input
+            opacity: 0
+            width: 0
+            height: 0
+
+            &:checked + .category-settings__slider
+                background-color: vars.$color-brand
+            
+                &::before
+                    transform: translateX(20px)
+    
+    &__slider
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        border-radius: 30px
+        background-color: #ccc
+        transition: 0.3s
+
+        &::before
+           content: ""
+           position: absolute
+           height: 20px
+           width: 20px
+           left: 3px
+           bottom: 3px
+           background-color: white
+           border-radius: 50%
+           transition: 0.3s 

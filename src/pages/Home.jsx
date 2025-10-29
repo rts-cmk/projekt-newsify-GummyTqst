@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useNewsCache from "../Hooks/useNewsCatch";
 import ArticlesList from "../components/ArticleList/ArticleList";
 import Search from "../components/Search/Search"
 
 export default function Home() {
   const { news, loading, error, saveArticle, unsaveArticle, saved, SECTIONS } = useNewsCache();
+  const [visibleSections, setVisibleSections] = useState(SECTIONS);
+
+    useEffect(() => {
+        const saved = JSON.parse(localStorage.getItem("visibleSections"))
+        if (saved) setVisibleSections(saved)
+    }, [])
 
   return (
     <div className="home-news">
@@ -13,7 +19,7 @@ export default function Home() {
       {loading && <p className="status">Loading latest news...</p>}
       {error && <p className="status error">{error.message}</p>}
 
-      {SECTIONS.map((section, i) => (
+      {visibleSections.map((section, i) => (
         <ArticlesList
           key={section}
           section={section}

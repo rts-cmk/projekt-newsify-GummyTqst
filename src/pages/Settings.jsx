@@ -1,10 +1,12 @@
 import ThemeToggle from "../components/DarkMode/Darkmode"
+import CategoryToggle from "../components/CategoryToggle/CategoryToggle"
+import "../styles/Settings.sass"
 
 export default function Settings() {
     return (
-        <div>
+        <div className="settings-page">
             <h1>Settings Page</h1>
-            <p>This is the Archive page content.</p>
+            <CategoryToggle />
             <ThemeToggle />
         </div>
     )
