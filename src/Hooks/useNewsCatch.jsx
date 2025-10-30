@@ -73,7 +73,7 @@ export default function useNewsCache() {
         }
     }
 
-    console.log(popularNews)
+    // console.log(popularNews)
 
     function saveArticle(article) {
         setSaved((prev) => {

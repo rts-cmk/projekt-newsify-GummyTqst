@@ -28,45 +28,47 @@ export default function MostPopularList({ popularNews, onSave, onUnsave, saved }
         <div className="most-popular-container">
             <h2>Most Popular Articles</h2>
 
-            {sortedPeriods.map((periodLabel) => {
-                const articles = popularNews[periodLabel] || []
-                const groupedSections = groupArticlesBySection(articles)
+            <div className="most-popular-container__scroll">
+                {sortedPeriods.map((periodLabel, i) => {
+                    const articles = popularNews[periodLabel] || []
+                    const groupedSections = groupArticlesBySection(articles)
 
-                return (
-                    <details 
-                        key={periodLabel}
-                        className="articles-list articles-list--popular"
-                        onToggle={(e) => {
-                            const element = e.target
-                            const openHeight = element.scrollHeight + "px"
-                            element.style.height = element.open ? openHeight : "null"
-                        }}
-                    >
-                        <summary className="articles-list__summary">
-                            <h3 className="articles-list__section-header">{periodLabel}</h3>
-                        </summary>
+                    return (
+                        <details 
+                            key={periodLabel}
+                            className="articles-list articles-list--popular"
+                            onToggle={(e) => {
+                                const element = e.target
+                                const openHeight = element.scrollHeight + "px"
+                                element.style.height = element.open ? openHeight : "null"
+                            }}
+                        >
+                            <summary className="articles-list__summary">
+                                <h3 className="articles-list__section-header">{periodLabel}</h3>
+                            </summary>
 
-                        <div className="articles-list__section-content articles-list__section-content--nested">
-                            {Object.entries(groupedSections).length > 0 ? (
-                                // 2. Inner Dropdown: Health, World, Travel (uses your existing ArticleList)
-                                Object.entries(groupedSections).map(([section, sectionArticles]) => (
-                                    <ArticlesList
-                                        key={section}
-                                        section={section} // e.g., "World", "Health"
-                                        articles={sectionArticles}
-                                        onSave={onSave}
-                                        onUnsave={onUnsave}
-                                        saved={saved}
-                                        defaultOpen={false}
-                                    />
-                                ))
-                            ) : (
-                                <p>No popular articles found for the defined sections in the {periodLabel} period.</p>
-                            )}
-                        </div>
-                    </details>
-                )
-            })}
+                            <div className="articles-list__section-content articles-list__section-content--nested">
+                                {Object.entries(groupedSections).length > 0 ? (
+                                    // 2. Inner Dropdown: Health, World, Travel (uses your existing ArticleList)
+                                    Object.entries(groupedSections).map(([section, sectionArticles]) => (
+                                        <ArticlesList
+                                            key={section}
+                                            section={section} // e.g., "World", "Health"
+                                            articles={sectionArticles}
+                                            onSave={onSave}
+                                            onUnsave={onUnsave}
+                                            saved={saved}
+                                            defaultOpen={false}
+                                        />
+                                    ))
+                                ) : (
+                                    <p>No popular articles found for the defined sections in the {periodLabel} period.</p>
+                                )}
+                            </div>
+                        </details>
+                    )
+                })}
+            </div>
         </div>
     )
 }
