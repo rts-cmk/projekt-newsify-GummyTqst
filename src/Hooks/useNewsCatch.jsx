@@ -1,13 +1,20 @@
 import { useState, useEffect, useRef } from "react";
-import fetchSection from "../API/api";
+import { fetchSection, fetchPopular } from "../API/api";
 
 const LS_KEY = "newsify_cache_v1";
 const SAVED_KEY = "newsify_saved_v1";
 const SECTIONS = ["world", "health", "business", "travel"];
 const REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
+export const POPULAR_PERIODS = {
+    'Today': 1,
+    'This Week': 7,
+    'This Month': 30
+}
+
 export default function useNewsCache() {
     const [news, setNews] = useState({});
+    const [popularNews, setPopularNews] = useState({})
     const [saved, setSaved] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -20,6 +27,7 @@ export default function useNewsCache() {
 
         if (cached && Date.now() - cached.timestamp < REFRESH_INTERVAL) {
             setNews(cached.sections);
+            setPopularNews(cached.popular || {})
         } else {
             refreshData();
         }
@@ -33,18 +41,29 @@ export default function useNewsCache() {
         fetching.current = true;
         setLoading(true);
         try {
-        const results = {};
-        const promises = SECTIONS.map((s) =>
-            fetchSection(s).then((r) => ({ s, r }))
-        );
-        const resolved = await Promise.all(promises);
-        resolved.forEach(({ s, r }) => (results[s] = r));
-        setNews(results);
-        localStorage.setItem(
-            LS_KEY,
-            JSON.stringify({ timestamp: Date.now(), sections: results })
-        );
-        setError(null);
+            // Top Stories Fetch
+            const results = {};
+            const promises = SECTIONS.map((s) =>
+                fetchSection(s).then((r) => ({ s, r }))
+            );
+            const resolved = await Promise.all(promises);
+            resolved.forEach(({ s, r }) => (results[s] = r));
+            setNews(results);
+
+            // Popular Articles Fetch
+            const popularArticles = {}
+            const popularPromises = Object.entries(POPULAR_PERIODS).map(([label, period]) => 
+                fetchPopular(period).then((r) => ({ label, r}))    
+            )
+            const popularResolved = await Promise.all(popularPromises)
+            popularResolved.forEach(({ label, r}) => (popularArticles[label] = r))
+            setPopularNews(popularArticles)
+
+            localStorage.setItem(
+                LS_KEY,
+                JSON.stringify({ timestamp: Date.now(), sections: results, popular: popularArticles })
+            );
+            setError(null);
         } catch (err) {
             console.error(err);
             setError(err);
@@ -53,6 +72,8 @@ export default function useNewsCache() {
             fetching.current = false;
         }
     }
+
+    console.log(popularNews)
 
     function saveArticle(article) {
         setSaved((prev) => {
@@ -72,5 +93,5 @@ export default function useNewsCache() {
         });
     }
 
-    return { news, saved, loading, error, saveArticle, unsaveArticle, SECTIONS };
+    return { news, popularNews, saved, loading, error, saveArticle, unsaveArticle, SECTIONS };
 }
