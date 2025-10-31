@@ -1,0 +1,87 @@
+@use 'variables' as vars
+    
+.loginContainer
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    min-height: 100vh
+
+    @include vars.themify(vars.$themes) 
+        background-color: vars.themed("bg");
+        color: vars.themed("text");
+
+    &__header
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+    &__logo
+        width: 120px
+        height: 150px
+        margin-top: 3rem
+        margin-bottom: 2rem
+
+    &__title
+        font-family: vars.$font_family-heading
+        font-size: vars.$font-size-xl
+        text-align: center
+        margin-bottom: 2rem
+    
+    &__subtitle
+        font-family: vars.$font_family-body
+        font-size: vars.$font-size-base
+        margin-bottom: 3rem
+        text-align: center
+        width: 80%
+
+    &__btns
+        display: flex
+        flex-direction: column
+        gap: 1rem
+        width: 70%
+
+    &__btn
+        padding: 0.635rem 2rem
+        border: 1px solid vars.$color-accent
+        color: vars.$color-text
+        background-color: vars.$color-bg
+        border-radius: 18px
+
+        &--password
+            background: vars.$color-brand
+            color: vars.$color-bg
+
+
+    &__seperator
+        display: flex
+        align-items: center
+        text-align: center
+        margin: 20px 0
+        text-transform: uppercase
+        width: 80%
+
+        &::before, &::after
+            content: ''
+            flex-grow: 1
+            height: 1px
+            @include vars.themify(vars.$themes) 
+                background-color: vars.themed("accent");
+        &::before
+            margin-right: 10px
+        &::after
+            margin-left: 10px
+
+    &__signupText
+        font-family: vars.$font_family-body
+        font-size: vars.$font-size-sm
+        margin-top: 2rem
+
+    &__signupLink
+        color: vars.$color-brand
+        text-decoration: none
+        font-weight: bold
+        cursor: pointer
+
+    

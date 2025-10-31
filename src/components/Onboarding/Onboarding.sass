@@ -1,0 +1,82 @@
+@use '../../styles/variables' as vars
+    
+.onboarding
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    align-items: center
+    height: 100vh
+    padding: 2rem
+    text-align: center
+    overflow: hidden
+
+    @include vars.themify(vars.$themes) 
+        background-color: vars.themed("bg");
+        color: vars.themed("text");
+
+    &__dots 
+        display: flex
+        justify-content: center
+        gap: 0.5rem
+        margin-bottom: 1.5rem
+    
+    &__actions
+        display: flex
+        justify-content: space-evenly
+        gap: 1rem
+
+    &__btn
+        width: 100%
+        padding: 0.625rem 2rem
+        border: none
+        border-radius: 2rem
+        cursor: pointer
+        text-align: center
+
+        &--next
+            background-color: vars.$color-brand
+            color: vars.$color-bg
+            font-family: vars.$font_family-body
+            font-size: vars.$font-size-lg
+        &--skip
+            background-color: vars.$color-bg
+            border: 1px solid vars.$color-border-green
+            color: vars.$color-brand
+            font-family: vars.$font_family-body
+            font-size: vars.$font-size-lg
+
+.dot
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background: vars.$color-accent
+    cursor: pointer
+
+    transition: width 0.3s ease, background-color 0.3s ease, transform 0.3s ease
+
+    &--active
+        background: vars.$color-brand
+        width: 25px
+        border-radius: 5px
+        
+.slide
+    width: 100%
+    user-select: none
+    cursor: grab
+    touch-action: pan-y
+
+    &__image
+        width: 250px
+        margin-bottom: 1.5rem
+    
+    &__header
+        font-family: vars.$font_family-heading
+        font-size: vars.$font-size-3xl
+        margin-bottom: 1rem
+
+    &__desc
+        font-family: vars.$font_family-body
+        font-size: vars.$font-size-base
+        letter-height: 1.5rem
+        max-width: 300px
+        margin: 0 auto
