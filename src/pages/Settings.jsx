@@ -5,7 +5,7 @@ import "../styles/Settings.sass"
 export default function Settings() {
     return (
         <div className="settings-page">
-            <h1>Settings Page</h1>
+            <h1>Settings</h1>
             <CategoryToggle />
             <ThemeToggle />
         </div>

@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router";
 import "../Layout/Layout.sass" 
 import logo from "../../assets/img/logo.png"
+import apiLogo from "../../assets/img/NYT_API_Logo.png"
 import { useEffect } from "react";
 
 const themeColor = () => {
@@ -55,6 +56,11 @@ export default function Layout() {
                         </NavLink>
                     </div>
                 </nav>
+                <div className="footer-nav__api-logo">
+                    <a href="https://developer.nytimes.com/">
+                        <img src={apiLogo} alt="New York Times logo" />
+                    </a>
+                </div>
             </footer>
         </div>
     )

@@ -1,19 +1,33 @@
 @use '../../styles/variables' as vars
     
 .category-settings
-    padding: 1.5rem
 
     &__options
         display: flex
         flex-direction: column
-        gap: 1rem
 
     &__item
         display: flex
         justify-content: space-between
         align-items: center
         padding: 1rem
-        border-radius: 8px
+        padding-block: 1rem
+        border: 1px solid #c5c5c5
+        border-width: 1px 0
+        width: 100%
+
+    h2
+        text-align: center
+        padding-bottom: 1rem
+        font-family: vars.$font-family-body
+        font-weight: 400
+
+    &__name
+        text-transform: uppercase
+        font-weight: 600
+        font-family: vars.$font-family-heading
+        @include vars.themify(vars.$themes) 
+            color: vars.themed("text");
 
     &__toggle
         position: relative
@@ -46,8 +60,8 @@
            position: absolute
            height: 22px
            width: 22px
-           left: 6px
-           bottom: 0
+           left: 7px
+           bottom: 1px
            background-color: white
            border-radius: 50%
            transition: 0.3s 
